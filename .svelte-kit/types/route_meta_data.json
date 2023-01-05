@@ -1,0 +1,9 @@
+{
+	"/": [
+		"src/routes/+page.js"
+	],
+	"/pokedex": [],
+	"/[pokeInfo]": [
+		"src/routes/[pokeInfo]/+page.js"
+	]
+}
