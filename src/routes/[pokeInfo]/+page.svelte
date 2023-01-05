@@ -2,7 +2,7 @@
 	export let data;
 	const { pokemon } = data;
 	import { tweened } from 'svelte/motion';
-	// import { addToPokedex, pokesStore, pokesFetching, pokedexStore } from '/stores/pokestore' -> error defining correct directory. Asure that it will load once click back button in browser. //
+	// import { addToPokedex, pokesStore, pokesFetching, pokedexStore } from '/stores/pokestore' -> error defining correct directory. Asure that it will load once click back button in browser. ///
 
 	// @ts-ignore
 	let colors = [];
