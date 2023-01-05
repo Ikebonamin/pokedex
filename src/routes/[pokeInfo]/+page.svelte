@@ -2,6 +2,7 @@
 	export let data;
 	const { pokemon } = data;
 	import { tweened } from 'svelte/motion';
+	// import { addToPokedex, pokesStore, pokesFetching, pokedexStore } from '/stores/pokestore' -> error defining correct directory. Asure that it will load once click back button in browser. //
 
 	// @ts-ignore
 	let colors = [];
@@ -21,6 +22,16 @@
 <nav class="h-90 w-full flex flex-col space-y-2 mb-4 mt-4 items-center justify-end md:flex-row">
 	<button class="bg-blue-400 w-72 h-20 text-3xl text-slate-200 font-bold rounded-lg">
 		<a href="/" class="hover:scale-100">voltar</a>
+	</button>
+	<button
+		class="bg-slate-100  w-48 h-[3rem] p-2 rounded-xl  z-40 hover:scale-95 transition-all duration-100"
+		on:click={() => addToPokedex(poke.id)}>Capturar!</button
+	>
+	<button
+		on:click={() => removeFromPokedex(poke.id)}
+		class="bg-red-400 text-slate-200 w-48 h-[3rem] p-2 rounded-xl z-40 hover:scale-95 transition-all duration-100"
+	>
+		Excluir
 	</button>
 	<div class="foto navbg  h-40  w-full" />
 	<!-- <button class="bg-blue-400 w-72 h-20 text-3xl text-slate-200 font-bold rounded-lg">
