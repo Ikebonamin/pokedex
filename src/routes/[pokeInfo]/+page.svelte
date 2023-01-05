@@ -2,7 +2,7 @@
 	export let data;
 	const { pokemon } = data;
 	import { tweened } from 'svelte/motion';
-	// import { addToPokedex, pokesStore, pokesFetching, pokedexStore } from '/stores/pokestore' -> error defining correct directory. Asure that it will load once click back button in browser. ///
+	import { addToPokedex, removeFromPokedex } from '../../stores/pokestore';
 
 	// @ts-ignore
 	let colors = [];
@@ -25,10 +25,10 @@
 	</button>
 	<button
 		class="bg-slate-100  w-48 h-[3rem] p-2 rounded-xl  z-40 hover:scale-95 transition-all duration-100"
-		on:click={() => addToPokedex(poke.id)}>Capturar!</button
+		on:click={() => addToPokedex(pokemon.id)}>Capturar!</button
 	>
 	<button
-		on:click={() => removeFromPokedex(poke.id)}
+		on:click={() => removeFromPokedex(pokemon.id)}
 		class="bg-red-400 text-slate-200 w-48 h-[3rem] p-2 rounded-xl z-40 hover:scale-95 transition-all duration-100"
 	>
 		Excluir
@@ -77,7 +77,7 @@
 		<div
 			class="BOX1 flex flex-col  space-y-8 p-10 rounded-xl bg-slate-500 text-white md:row-span-2 overflow-clip "
 		>
-			<h2># {pokemon.id}</h2>
+			<h2>#{pokemon.id}</h2>
 			<h2>{pokemon.name}</h2>
 
 			<div
