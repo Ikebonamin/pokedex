@@ -26,16 +26,19 @@ export const fetchPokes = async () => {
 };
 
 export const addToPokedex = (id) => {
-	// add to pokedexStore
 	const poke = get(pokesStore).find((poke) => poke.id == id);
-	pokedexStore.update((pokedex) => [...pokedex, poke]);
-	// remove from todos array (which copied content from pokeStore)
-	pokesStore.update((pokemons) => pokemons.filter((poke) => poke.id != id));
+	if (poke) {
+		pokedexStore.update((pokedex) => [...pokedex, poke]);
+		// remove from todos array (which copied content from pokeStore)
+		pokesStore.update((pokemons) => pokemons.filter((poke) => poke.id != id));
+	}
 };
 
 // Just the opposite of addToPokedex
 export const removeFromPokedex = (id) => {
 	const poke = get(pokedexStore).find((poke) => poke.id == id);
-	pokesStore.update((pokemons) => [...pokemons, poke]);
-	pokedexStore.update((pokedex) => pokedex.filter((poke) => poke.id != id));
+	if (poke) {
+		pokesStore.update((pokemons) => [...pokemons, poke]);
+		pokedexStore.update((pokedex) => pokedex.filter((poke) => poke.id != id));
+	}
 };
