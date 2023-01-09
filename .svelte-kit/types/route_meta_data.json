@@ -4,6 +4,6 @@
 	],
 	"/pokedex": [],
 	"/[pokeInfo]": [
-		"src/routes/[pokeInfo]/+page.js"
+		"src/routes/[pokeInfo]/+page.server.js"
 	]
 }

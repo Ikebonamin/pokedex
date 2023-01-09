@@ -11,7 +11,7 @@ export const server_loads = [];
 export const dictionary = {
 	"/": [2],
 	"/pokedex": [3],
-	"/[pokeInfo]": [4]
+	"/[pokeInfo]": [~4]
 };
 
 export const hooks = {

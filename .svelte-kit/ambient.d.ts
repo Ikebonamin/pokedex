@@ -54,7 +54,6 @@ declare module '$env/static/private' {
 	export const INIT_CWD: string;
 	export const INTEL_DEV_REDIST: string;
 	export const LANG: string;
-	export const LC_CTYPE: string;
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
 	export const MANPATH: string;
@@ -192,7 +191,6 @@ declare module '$env/dynamic/private' {
 		INIT_CWD: string;
 		INTEL_DEV_REDIST: string;
 		LANG: string;
-		LC_CTYPE: string;
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
 		MANPATH: string;

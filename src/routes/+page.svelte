@@ -1,15 +1,28 @@
 <script>
+	// @ts-nocheck
 	import { addToPokedex, pokesStore, pokesFetching, pokedexStore } from '../stores/pokestore';
-	import { fade, scale } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 	let bgLtGreen = '#729F92';
 	let bGorange = '#EAAB7D';
 	let bgBlue = '#71C3FF';
 	let bgDkGreen = '#76A866';
 	let bgBrown = '#BF9762';
-	console.log(`pokedexStore: ${pokedexStore}`);
-	let src = '/src/lib/tipos/grass.png';
+	import Modal from '$lib/components/modal.svelte';
+	let showModal = false;
+	const toggleModal = () => {
+		showModal = !showModal;
+	};
+
+	// console.log(`pokedexStore: ${pokedexStore}`);
 </script>
+
+<Modal
+	head="Gotcha!"
+	body="O Pokémon foi adisionado à sua Pokedéx."
+	{showModal}
+	on:click={toggleModal}
+/>
 
 <nav class="h-90 w-full flex flex-col space-y-2 mb-4 mt-4 items-center justify-end  md:flex-row">
 	<div class="foto navbg  h-40  w-full" />
@@ -19,16 +32,18 @@
 </nav>
 
 <h1
-	class="text-3xl font-bold text-center md:text-left bg-slate-800 text-slate-100 pt-16 pb-16 pl-16"
+	class="text-7xl font-bold text-center md:text-left  bg-gray-600 text-slate-100 pt-16 pb-16 pl-16"
 >
 	Todos os Pokemóns
 </h1>
+
 <class
-	class="wrapper bg-slate-800 flex flex-col items-center space-y-8 md:flex-row spacex-2 md:flex-wrap md:m-auto md:justify-center p-8 md:space-x-8 overflow-hidden"
+	class="wrapper bg-gray-600 flex flex-col items-center space-y-8 md:flex-row spacex-2 md:flex-wrap md:m-auto md:justify-center p-8 md:space-x-8 overflow-hidden"
 >
 	<!-- {#if $pokesFetching}
 		<p>fetching</p>
 	{/if} -->
+
 	<br />
 
 	{#each $pokesStore.sort((a, b) => a.id - b.id) as poke (poke.id)}
@@ -37,17 +52,33 @@
 				<br />
 				<div
 					class="bgcard w-[44rem] h-[21rem] flex items-center justify-around p-1 space-x-4 rounded-2xl shadow-lg"
+					style:background-color={poke.types[0].type.name === 'grass'
+						? bgLtGreen
+						: poke.types[0].type.name === 'fire'
+						? bGorange
+						: poke.types[0].type.name === 'water'
+						? bgBlue
+						: poke.types[0].type.name === 'poison'
+						? bgDkGreen
+						: poke.types[0].type.name === 'ground'
+						? bgBrown
+						: poke.types[0].type.name === 'normal'
+						? bgBrown
+						: poke.types[0].type.name === 'bug'
+						? bgDkGreen
+						: 'white'}
 				>
 					<div class="esquerdo  flex flex-col space-y-2 p-8 w-2/4 h-full relative ">
-						<a href="/{poke.id}"><p class="font-bold text-3xl text-slate-400"># {poke.id}</p></a>
-						<p class=" font-bold text-3xl  text-slate-400">{poke.name}</p>
+						<a href="/{poke.id}"><p class="font-bold text-3xl text-slate-100"># {poke.id}</p></a>
+						<p class=" font-bold text-3xl  text-slate-100">{poke.name}</p>
 						<div class="type flex space-x-4 h-auto p-4  ">
 							{#each poke.types as type}
 								<img src="/src/lib/tipos/{type.type.name}.png" alt="poder" />
 							{/each}
 						</div>
-						<a class="underline decoration-pink-50-500 absolute bottom-5" href="/{poke.id}"
-							>detalhes</a
+						<a
+							class="text-slate-200  text-xl absolute bottom-5 underline slate-500 font-bold  underline-offset-4"
+							href="/{poke.id}">Detalhes</a
 						>
 					</div>
 					<div class="direito flex flex-col  space-y-2 p-4 w-2/4 h-full relative">
@@ -57,8 +88,9 @@
 							alt="foto_pokemon"
 						/>
 						<button
-							class="bg-slate-100  w-48 h-[3rem] p-2 rounded-xl absolute bottom-[2rem] right-16 z-40 hover:scale-95 transition-all duration-100"
-							on:click={() => addToPokedex(poke.id)}>Capturar!</button
+							class="bg-slate-100 text-slate-700 text-2xl font-bold w-48 h-[3rem] p-2 rounded-xl absolute bottom-[2rem] right-16 z-40 hover:scale-95 transition-all duration-100 "
+							on:click={() => addToPokedex(poke.id)}
+							on:click={toggleModal}>Capturar!</button
 						>
 					</div>
 				</div>
@@ -74,7 +106,11 @@
 {/each} -->
 <style>
 	.bgcard {
-		background-color: white;
+		background-image: url($lib/marcadagua/pngwing2.png);
+		background-repeat: no-repeat;
+		background-position: right 0px top 0px;
+		background-size: 60%, 60%;
+		z-index: 20;
 	}
 	.navbg {
 		background-image: url($lib/logo/logo.png);
