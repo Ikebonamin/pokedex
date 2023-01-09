@@ -74,7 +74,7 @@
 
 							<div class="type flex space-x-4 h-auto p-4  ">
 								{#each poke.types as type}
-									<img src="/src/lib/tipos/{type.type.name}.png" alt="imagem_tipos" />
+									<img src="/{type.type.name}.png" alt="imagem_tipos" />
 								{/each}
 							</div>
 							<a
