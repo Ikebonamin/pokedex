@@ -148,7 +148,7 @@
 				<h2 class="text-4xl font-bold">{pokemon.name}</h2>
 				{#each pokemon.types as type}
 					<br />
-					<img src="/{type.type.name}.png" alt="" />
+					<img src="/{type.type.name}.png" alt="Tipos" />
 				{/each}
 			</section>
 			<div

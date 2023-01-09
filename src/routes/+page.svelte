@@ -73,7 +73,7 @@
 						<p class=" font-bold text-3xl  text-slate-100">{poke.name}</p>
 						<div class="type flex space-x-4 h-auto p-4  ">
 							{#each poke.types as type}
-								<img src="/src/lib/tipos/{type.type.name}.png" alt="poder" />
+								<img src="/{type.type.name}.png" alt="poderes" />
 							{/each}
 						</div>
 						<a
