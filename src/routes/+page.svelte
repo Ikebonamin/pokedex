@@ -106,14 +106,14 @@
 {/each} -->
 <style>
 	.bgcard {
-		background-image: url($lib/marcadagua/pngwing2.png);
+		background-image: url(/pngwing2.png);
 		background-repeat: no-repeat;
 		background-position: right 0px top 0px;
 		background-size: 60%, 60%;
 		z-index: 20;
 	}
 	.navbg {
-		background-image: url($lib/logo/logo.png);
+		background-image: url(/logo.png);
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: 230px 83px;
